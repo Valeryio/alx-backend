@@ -70,7 +70,7 @@ class Server:
         r_index = index_range(page, page_size)
         result_dict = {}
         data = self.get_page(page, page_size)
-        total_pages = round(len(self.__dataset) / page_size)
+        total_pages = math.ceil(len(self.__dataset) / page_size) + 0
         next_page = page + 1 if (page + 1) < total_pages else None
         prev_page = page - 1 if (page - 1) > 0 else None
 
