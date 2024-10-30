@@ -1,23 +1,30 @@
 #!/usr/bin/env python3
 
-"""This is a module about a simple basic cache
-class
+"""This is a module that contains a fifo class
 """
 
 from base_caching import BaseCaching
 
 
-class BasicCache(BaseCaching):
+class FIFOCache(BaseCaching):
+
+    def __init__(self):
+        super().__init__()
 
     def put(self, key, item):
-        """
-        This method allow the class to set new item
-        to the cache attribute
+        """Assign value to the internal
+        caching directory
         param: key
         param: item
         """
+
         if key is not None and item is not None:
             self.cache_data[key] = item
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                for key, value in self.cache_data.items():
+                    print(f"DISCARD {key}")
+                    self.cache_data.pop(key)
+                    break
 
     def get(self, key):
         """
