@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
-"""This is a module that contains a lru class
+"""This is a module that contains a mru class
 """
 
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
-    This is the LRU class, that handle basic
-    LRU cache operations
+    This is the MRU class, that handle basic
+    MRU cache operations
     """
     def __init__(self):
         super().__init__()
@@ -25,23 +25,14 @@ class LRUCache(BaseCaching):
 
             try:
                 value = self.cache_data[key]
-                pre_cache = {key: value}
-
-                for n_key, n_val in self.cache_data.items():
-                    if n_key != key:
-                        pre_cache[n_key] = n_val
-                self.cache_data = pre_cache
             except KeyError:
                 self.cache_data[key] = item
 
-            last_item = 0
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 for key, value in self.cache_data.items():
-                    last_item += 1
-                    if last_item == len(self.cache_data) - 1:
-                        print(f"DISCARD {key}")
-                        self.cache_data.pop(key)
-                        break
+                    print(f"DISCARD {key}")
+                    self.cache_data.pop(key)
+                    break
 
     def get(self, key):
         """
