@@ -39,7 +39,7 @@ class LRUCache(BaseCaching):
                 for key, value in self.cache_data.items():
                     last_item += 1
                     if last_item == len(self.cache_data) - 1:
-                        print(f"DISCARD {key}")
+                        print(f"DISCARD: {key}")
                         self.cache_data.pop(key)
                         break
 

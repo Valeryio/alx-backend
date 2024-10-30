@@ -30,7 +30,7 @@ class MRUCache(BaseCaching):
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 for key, value in self.cache_data.items():
-                    print(f"DISCARD {key}")
+                    print(f"DISCARD: {key}")
                     self.cache_data.pop(key)
                     break
 
