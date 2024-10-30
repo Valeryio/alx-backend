@@ -8,6 +8,12 @@ from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
+    """This is the basic cache class of the first tasks to
+    get basic caching operations
+
+    Attributes:
+        cache_data: dict
+    """
 
     def put(self, key, item):
         """
