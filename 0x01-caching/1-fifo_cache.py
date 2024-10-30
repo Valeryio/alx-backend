@@ -7,6 +7,9 @@ from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
+    """This is the fifo class, inheriting from the basic clas
+    that handle basic FIFO cache operations
+    """
 
     def __init__(self):
         super().__init__()

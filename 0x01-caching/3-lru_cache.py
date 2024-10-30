@@ -7,7 +7,10 @@ from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
-
+    """
+    This is the LRU class, that handle basic
+    LRU cache operations
+    """
     def __init__(self):
         super().__init__()
 
