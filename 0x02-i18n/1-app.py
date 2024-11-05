@@ -3,8 +3,7 @@ This module import a simple flask app
 """
 
 from flask import Flask, g, render_template
-from flask_babel import Babel, _
-
+from flask_babel import Babel
 
 
 app = Flask(__name__)
@@ -21,6 +20,7 @@ class Config:
 
 # Configurations of the app
 app.config.from_object(Config)
+babel = Babel(app)
 
 
 @app.route("/")
