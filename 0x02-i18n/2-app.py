@@ -1,22 +1,23 @@
-"""
-This module import a simple flask app
-"""
 
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, request, flash
+import uuid
 from flask_babel import Babel, _
 
 
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 app = Flask(__name__)
+babel = Babel(app, locale_selector=get_locale)
 
 
 class Config:
-    """This is the config
-    class used to configure our app
-    """
     BABEL_LOCALE = "fr"
     BABEL_TIMEZONE = "UTC"
     LANGUAGES = ["en", "fr"]
+
+    SECRET_KEY = uuid.uuid4().hex
 
 
 # Configurations of the app
@@ -25,9 +26,7 @@ app.config.from_object(Config)
 
 @app.route("/")
 def index():
-    """THis is a simple index page rendered
-    by this view
-    """
+    flash(_('Your post is now live!'))
     return render_template("1-index.html")
 
 
